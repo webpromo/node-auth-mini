@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const strategy = require(`${__dirname}/strategy.js`);
+const strategy = require(`${__dirname}/strategy`);
 
 const app = express();
 
