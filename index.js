@@ -4,11 +4,13 @@ const passport = require('passport');
 const strategy = require(`${__dirname}/strategy.js`);
 
 const app = express();
+
 app.use( session({
   secret: 'sup dude',
   resave: false,
   saveUninitialized: false
 }));
+
 app.use( passport.initialize() );
 app.use( passport.session() );
 passport.use( strategy );
@@ -21,8 +23,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-app.get( '/login', 
-  passport.authenticate('auth0', 
+app.get( '/login',
+  passport.authenticate('auth0',
     { successRedirect: '/me', failureRedirect: '/login', failureFlash: true }
   )
 );
