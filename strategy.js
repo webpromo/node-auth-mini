@@ -1,5 +1,5 @@
 const Auth0Strategy = require('passport-auth0');
-const { domain, clientID, clientSecret } = require(`${__dirname}/config.js`);
+const { domain, clientID, clientSecret } = require(`${__dirname}/config`);
 
 module.exports = new Auth0Strategy({
   domain: domain,
