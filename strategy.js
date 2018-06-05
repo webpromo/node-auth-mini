@@ -1,13 +1,13 @@
 const Auth0Strategy = require('passport-auth0');
-const config = require(`${__dirname}/config.js`);
-const { domain, clientID, clientSecret } = config;
+const { DOMAIN, CLIENT_ID, CLIENT_SECRET } = process.env;
 
 module.exports = new Auth0Strategy({
-   domain:       domain,
-   clientID:     clientID,
-   clientSecret: clientSecret,
-   callbackURL:  '/login'
-  },
+  domain: DOMAIN,
+  clientID: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
+  callbackURL: '/login',
+  scope: 'openid email profile'
+},
   function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
